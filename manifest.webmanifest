@@ -1,0 +1,9 @@
+{
+  "name": "Northline \u2014 EchoVerse Audio",
+  "short_name": "Northline",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#050608",
+  "theme_color": "#050608",
+  "description": "An immersive Northline EchoStory by EchoVerse Audio and AeroVista."
+}

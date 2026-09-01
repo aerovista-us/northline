@@ -1,45 +1,27 @@
-# Northline — EchoStory
+# Northline EchoStory
 
-A mobile-first, GitHub Pages experience for the **AeroVista Northline Collection**, built as an immersive release rather than a conventional album page.
+A mobile-first, GitHub Pages-ready immersive album/story/store experience for the **AeroVista Northline Collection**.
 
-**EchoVerse Audio | An AeroVista Production**
+**Branding:** EchoVerse Audio | An AeroVista Production
 
-## Live architecture
+## What is included
 
-This repository is intentionally static-first so it can run directly from GitHub Pages with no build server.
+- Mobile-first album player with 6-track Northline sequence
+- Track-specific AeroVista artwork
+- Built-in **Northline demo bed** so the visualizer, transport and EQ work immediately
+- Web Audio API: bass / mid / air EQ, compressor, volume and analyzer
+- Three themed visualizer modes: Ridgeline, Mirror and Signal
+- Auto-continue, shuffle, repeat modes, seeking and Media Session controls
+- Track story view and immersive art
+- JSON-driven Northline store
+- Fail-closed Square checkout integration following the current AeroVista storefront pattern
+- Local catalog import at `?admin=1`
+- JSON + generated-JS fallbacks so the experience can be previewed from `file://`
+- No external UI framework or runtime dependency
 
-- `index.html` — player / story / store shell
-- `styles.css` — Northline visual system
-- `app.js` — player, Web Audio graph, visualizers, story UI, cart and Square handoff
-- `tracks.json` — album / track source of truth
-- `store.json` — merchandise source of truth
-- `tracks.generated.js` / `store.generated.js` — fallback snapshots for local preview
-- `assets/art/` — optimized Northline artwork
-- `assets/audio/northline-demo.mp3` — temporary built-in system demo
-- `audio/` — destination for approved masters
-- `.github/workflows/pages.yml` — GitHub Pages deployment workflow
+## Northline audio masters
 
-## Player
-
-The release player includes:
-
-- Six-track Northline sequence
-- Automatic next-track continuation
-- Shuffle
-- Repeat all / repeat one / off
-- Seek and volume controls
-- Media Session controls where supported
-- Web Audio API signal chain
-- Bass / mids / air EQ
-- Compressor + output gain
-- Presets: **Flat / Night / Summit / Low Road**
-- Visualizer modes: **Ridgeline / Mirror / Signal**
-- Full-screen visualizer
-- Track-specific artwork and story views
-
-## Audio masters
-
-The final files are expected at:
+The player is wired for these final files:
 
 ```text
 audio/northline.mp3
@@ -50,27 +32,23 @@ audio/powderline.mp3
 audio/source-code.mp3
 ```
 
-The current build includes a small original system-demo bed for **Northline** only so transport, EQ, visualizers and auto-continuation can be tested before the approved masters arrive. Tracks without a master remain visible and fail closed rather than playing unrelated audio.
+This prototype ships a small original instrumental system demo for `Northline` only. It is **not the final Suno master**.
 
-When an approved master is added, update its entry in `tracks.json`:
+When the final Northline master is ready:
 
-```json
-{
-  "audio": "audio/northline.mp3",
-  "available": true,
-  "demo": false
-}
-```
+1. Place it at `audio/northline.mp3`.
+2. Change the Northline entry in `tracks.json` from:
+   - `"audio": "builtin:northline-demo"`
+   - `"demo": true`
+   to:
+   - `"audio": "audio/northline.mp3"`
+   - `"demo": false`
+3. For each remaining song, add the MP3 and set `"available": true`.
+4. Regenerate `tracks.generated.js` from the same JSON if file:// preview fallback is still desired.
 
-Then regenerate the fallback snapshot:
+## Store catalog
 
-```bash
-python scripts/build-fallbacks.py
-```
-
-## Store + Square
-
-`store.json` is the Northline merchandise source of truth. A production-ready variant should include:
+`store.json` is the source of truth. Each sellable variant should provide:
 
 ```json
 {
@@ -83,48 +61,50 @@ python scripts/build-fallbacks.py
 }
 ```
 
-The browser follows the same fail-closed commerce pattern used by current AeroVista storefronts:
+The client:
 
-1. `GET https://api.aerovista.us/api/square/bootstrap`
-2. Verify the selected `cartKey` is allowed by the production Square map
-3. `POST` the cart to `/api/square/checkout`
-4. Redirect only when the API returns an approved `checkoutUrl`
+1. GETs `https://api.aerovista.us/api/square/bootstrap`
+2. Verifies `cartKey` against `sellableCartKeys`
+3. POSTs the cart to `https://api.aerovista.us/api/square/checkout`
+4. Redirects only when the API returns `ok: true` and a `checkoutUrl`
 
-Until a product has real pricing and Square mappings, its purchase action stays disabled.
+Until a product is explicitly mapped, its purchase button stays disabled.
 
-For local catalog testing, open the site with:
+For local catalog testing, open:
 
 ```text
-?admin=1
+index.html?admin=1
 ```
 
-and use **Import store.json**. The imported catalog is kept in localStorage and can be reset to the bundled catalog.
+and use **Import store.json**. The imported catalog is stored in localStorage and can be reset to the bundled version.
 
 ## GitHub Pages
 
-Repository:
+The existing `aerovista-us/echostory` repository already serves the custom domain `echostory.aerovista.us`.
+
+Recommended additive deployment path:
 
 ```text
-https://github.com/aerovista-us/northline
+/northline/
 ```
 
-The included Pages workflow deploys the repository root on pushes to `main`.
-
-Expected default Pages URL once GitHub Pages is enabled for **GitHub Actions**:
+which makes the experience available at:
 
 ```text
-https://aerovista-us.github.io/northline/
+https://echostory.aerovista.us/northline/
 ```
 
-A custom AeroVista domain can be added later without changing the application architecture.
+without replacing the current EchoStory tribute storefront at the site root.
 
-## Before public launch
+## Source art
 
-- Replace the demo bed with the approved Northline master.
+The browser build uses optimized WebP artwork in `assets/art/`. The included files are small enough for GitHub Pages while preserving the black/silver/electric-blue linework.
+
+## Production hardening before public launch
+
+- Replace the demo bed with the approved Suno master.
 - Add the five remaining MP3 masters.
-- Add production garment variants, prices and Square mappings to `store.json`.
-- Confirm `api.aerovista.us` CORS permits the final public Northline origin.
-- Test iOS Safari and Android Chrome audio behavior on physical devices.
-- Add the final analytics event taxonomy only after release behavior is locked.
-
-© 2026 AeroVista / EchoVerse Audio.
+- Replace placeholder store products with production garment/Square mappings.
+- Run real iOS Safari and Android Chrome audio tests.
+- Confirm CORS on `api.aerovista.us` allows the EchoStory origin.
+- Add Umami/analytics only after the final event taxonomy is agreed.

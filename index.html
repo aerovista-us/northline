@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#050608">
+  <meta name="description" content="Northline — an immersive EchoStory by EchoVerse Audio and AeroVista.">
+  <title>Northline — EchoVerse Audio | An AeroVista Production</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient" aria-hidden="true">
+    <div class="ambient-art" id="ambientArt"></div>
+    <div class="ambient-vignette"></div>
+    <canvas id="ambientCanvas"></canvas>
+  </div>
+
+  <header class="topbar">
+    <a class="brand" href="#listen" aria-label="EchoVerse Audio Northline">
+      <span class="apex" aria-hidden="true"></span>
+      <span class="brand-copy">
+        <strong>ECHOVERSE AUDIO</strong>
+        <small>AN AEROVISTA PRODUCTION</small>
+      </span>
+    </a>
+    <button class="icon-btn bag-btn" id="bagButton" aria-label="Open store bag">
+      <span>Bag</span><b id="bagCount">0</b>
+    </button>
+  </header>
+
+  <nav class="section-nav" aria-label="EchoStory sections">
+    <button data-view="listen" class="active">Listen</button>
+    <button data-view="story">Story</button>
+    <button data-view="store">Store</button>
+  </nav>
+
+  <main>
+    <section class="view active" id="view-listen" data-view-panel="listen">
+      <div class="player-shell">
+        <section class="now-panel" aria-label="Now playing">
+          <div class="eyebrow"><span id="trackNumber">00</span> / NORTHLINE</div>
+          <div class="art-stage" id="artStage">
+            <img id="heroArt" alt="" draggable="false">
+            <canvas id="visualizer" aria-label="Audio visualizer"></canvas>
+            <div class="art-sheen"></div>
+            <button class="viz-mode" id="vizMode" title="Change visualizer mode">RIDGELINE</button>
+            <span class="demo-badge" id="demoBadge">BUILT-IN DEMO BED</span>
+          </div>
+          <div class="now-copy">
+            <div>
+              <p class="track-kicker" id="trackSubtitle">The Signal</p>
+              <h1 id="trackTitle">Northline</h1>
+              <p class="track-feel" id="trackFeel"></p>
+            </div>
+            <button class="story-peek" id="storyPeek">Track story <span>↗</span></button>
+          </div>
+
+          <div class="transport-card">
+            <audio id="audio" preload="metadata"></audio>
+            <div class="time-row">
+              <span id="currentTime">0:00</span>
+              <input id="seek" type="range" min="0" max="1000" value="0" aria-label="Seek">
+              <span id="duration">0:00</span>
+            </div>
+            <div class="transport">
+              <button class="transport-small" id="shuffleButton" aria-label="Shuffle" aria-pressed="false">⇄</button>
+              <button class="transport-small" id="prevButton" aria-label="Previous track">‹</button>
+              <button class="play" id="playButton" aria-label="Play"><span id="playIcon">▶</span></button>
+              <button class="transport-small" id="nextButton" aria-label="Next track">›</button>
+              <button class="transport-small" id="repeatButton" aria-label="Repeat mode" data-mode="all">↻</button>
+            </div>
+            <div class="audio-tools">
+              <button class="tool-toggle" id="eqToggle" aria-expanded="false">EQ <span id="eqPresetLabel">FLAT</span></button>
+              <label class="volume">
+                <span>VOL</span>
+                <input id="volume" type="range" min="0" max="1" step=".01" value=".88" aria-label="Volume">
+              </label>
+              <button class="tool-toggle" id="fullscreenViz">VISUAL</button>
+            </div>
+          </div>
+
+          <div class="eq-panel" id="eqPanel" hidden>
+            <div class="preset-row" id="presetRow">
+              <button data-preset="flat" class="active">Flat</button>
+              <button data-preset="night">Night</button>
+              <button data-preset="summit">Summit</button>
+              <button data-preset="lowroad">Low Road</button>
+            </div>
+            <div class="eq-sliders">
+              <label><span>BASS <b id="bassValue">0</b></span><input id="bass" type="range" min="-12" max="12" step=".5" value="0"></label>
+              <label><span>MID <b id="midValue">0</b></span><input id="mid" type="range" min="-12" max="12" step=".5" value="0"></label>
+              <label><span>AIR <b id="trebleValue">0</b></span><input id="treble" type="range" min="-12" max="12" step=".5" value="0"></label>
+            </div>
+          </div>
+        </section>
+
+        <section class="queue-panel" aria-label="Northline track list">
+          <div class="queue-head">
+            <div>
+              <p>ECHOSTORY / 2026</p>
+              <h2>Northline Collection</h2>
+            </div>
+            <span id="trackCount">06 TRACKS</span>
+          </div>
+          <div class="track-list" id="trackList"></div>
+          <p class="player-note">Auto-continue is on. Tracks without an uploaded master stay visible but fail closed rather than playing the wrong audio.</p>
+        </section>
+      </div>
+    </section>
+
+    <section class="view" id="view-story" data-view-panel="story">
+      <div class="story-hero">
+        <p class="eyebrow">AEROVISTA / NORTH IDAHO</p>
+        <h1>Found in the landscape.</h1>
+        <p id="collectionDescription"></p>
+      </div>
+      <div class="story-grid" id="storyGrid"></div>
+      <section class="brand-manifesto">
+        <img id="brandManifestoArt" alt="AeroVista mountain mark with Built Behind the Scenes">
+        <div>
+          <p class="eyebrow">THE THREAD UNDERNEATH</p>
+          <h2>Built behind the scenes.</h2>
+          <p>Northline treats the AeroVista apex as something discovered rather than stamped on top—an angle in a mountain, a reflection in water, a trail through snow, or a system hidden underneath.</p>
+        </div>
+      </section>
+    </section>
+
+    <section class="view" id="view-store" data-view-panel="store">
+      <div class="store-hero">
+        <div>
+          <p class="eyebrow">NORTHLINE / FIELD GOODS</p>
+          <h1>Wear the signal.</h1>
+          <p>Collection pieces are driven from a JSON catalog. Square remains authoritative for checkout pricing and availability.</p>
+        </div>
+        <a class="external-store" href="https://apparel.aerovista.us/" target="_blank" rel="noopener">AeroVista Apparel ↗</a>
+      </div>
+      <div class="store-grid" id="storeGrid"></div>
+      <div class="store-admin" id="storeAdmin" hidden>
+        <strong>Catalog tools</strong>
+        <span>Visible with <code>?admin=1</code>. Import a compatible JSON catalog without rebuilding the page.</span>
+        <label class="import-button">Import store.json<input id="catalogImport" type="file" accept=".json,application/json" hidden></label>
+        <button id="resetCatalog">Reset bundled catalog</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <strong>EchoVerse Audio</strong>
+      <span>Music becomes part of the story.</span>
+    </div>
+    <div class="foot-production">
+      <span class="apex tiny" aria-hidden="true"></span>
+      <span>An AeroVista Production</span>
+    </div>
+  </footer>
+
+  <aside class="drawer" id="cartDrawer" aria-hidden="true">
+    <div class="drawer-scrim" id="cartScrim"></div>
+    <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="bagTitle">
+      <div class="drawer-head">
+        <div><p class="eyebrow">NORTHLINE STORE</p><h2 id="bagTitle">Your bag</h2></div>
+        <button class="icon-btn" id="cartClose" aria-label="Close bag">×</button>
+      </div>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-empty" id="cartEmpty">Nothing here yet.</div>
+      <div class="cart-summary" id="cartSummary" hidden>
+        <div><span>Subtotal</span><strong id="cartSubtotal">—</strong></div>
+        <button class="checkout" id="checkoutButton">Checkout verification pending</button>
+        <p id="checkoutStatus"></p>
+      </div>
+    </div>
+  </aside>
+
+  <div class="story-modal" id="storyModal" hidden>
+    <div class="story-modal-scrim" data-close-story></div>
+    <article class="story-modal-card" role="dialog" aria-modal="true">
+      <button class="modal-close" data-close-story aria-label="Close story">×</button>
+      <p class="eyebrow" id="modalNumber"></p>
+      <img id="modalArt" alt="">
+      <p class="track-kicker" id="modalSubtitle"></p>
+      <h2 id="modalTitle"></h2>
+      <p id="modalStory"></p>
+      <button class="listen-from-story" id="listenFromStory">Listen to this track</button>
+    </article>
+  </div>
+
+  <div class="viz-overlay" id="vizOverlay" hidden>
+    <button class="modal-close" id="closeViz" aria-label="Close visualizer">×</button>
+    <canvas id="fullVisualizer"></canvas>
+    <div class="viz-title"><span id="fullTrackNumber">00</span><strong id="fullTrackTitle">NORTHLINE</strong><small>ECHOVERSE AUDIO / AN AEROVISTA PRODUCTION</small></div>
+  </div>
+
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="config.js"></script>
+  <script src="tracks.generated.js"></script>
+  <script src="store.generated.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
