@@ -130,9 +130,21 @@ main{width:min(1220px,100%);margin:0 auto;padding:18px 12px 84px}
   padding:12px;border-radius:18px;border:1px solid rgba(255,255,255,.09);
   background:rgba(0,0,0,.24)
 }
+.playback-status{display:flex;align-items:center;gap:7px;margin-bottom:9px;color:#8794a3;font-size:8px;font-weight:900;letter-spacing:.16em}
+.status-light{width:6px;height:6px;border-radius:50%;background:#78828d;box-shadow:0 0 0 4px rgba(120,130,141,.08)}
+.playback-format{margin-left:auto;color:#5f6a77}
+.transport-card[data-playback-state="playing"] .status-light{background:var(--blue2);box-shadow:0 0 0 4px rgba(18,153,255,.11),0 0 15px rgba(18,153,255,.7)}
+.transport-card[data-playback-state="playing"] #playbackStatus{color:#bce4ff}
+.transport-card[data-playback-state="loading"] .status-light{background:#d3dee8;animation:statusPulse 1s ease-in-out infinite}
+.transport-card[data-playback-state="error"] .status-light{background:var(--danger)}
+@keyframes statusPulse{50%{opacity:.3;transform:scale(.78)}}
 .time-row{display:grid;grid-template-columns:38px 1fr 38px;gap:8px;align-items:center;color:#6f7b89;font-size:9px;font-variant-numeric:tabular-nums}
 input[type=range]{width:100%;accent-color:var(--blue)}
-#seek{height:4px}
+#seek{--played:0%;--buffered:0%;height:4px;appearance:none;border-radius:999px;background:linear-gradient(to right,var(--blue) 0 var(--played),rgba(191,207,220,.34) var(--played) var(--buffered),rgba(255,255,255,.09) var(--buffered) 100%)}
+#seek::-webkit-slider-runnable-track{height:4px;background:transparent}
+#seek::-webkit-slider-thumb{appearance:none;width:13px;height:13px;margin-top:-4.5px;border-radius:50%;border:2px solid #07101a;background:#f3f8fc;box-shadow:0 0 0 3px rgba(18,153,255,.16)}
+#seek::-moz-range-track{height:4px;background:transparent}
+#seek::-moz-range-thumb{width:10px;height:10px;border-radius:50%;border:2px solid #07101a;background:#f3f8fc}
 .transport{display:grid;grid-template-columns:1fr 1fr 64px 1fr 1fr;gap:5px;align-items:center;margin-top:8px}
 .transport button{cursor:pointer;border:0;background:transparent}
 .transport-small{height:50px;color:#a8b3c0;font-size:25px;border-radius:14px!important}

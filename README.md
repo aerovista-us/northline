@@ -32,19 +32,9 @@ audio/powderline.mp3
 audio/source-code.mp3
 ```
 
-This prototype ships a small original instrumental system demo for `Northline` only. It is **not the final Suno master**.
+All six approved master files are connected using lowercase, URL-safe filenames. `tracks.json` is authoritative; regenerate `tracks.generated.js` with `scripts/build-fallbacks.py` whenever track metadata changes.
 
-When the final Northline master is ready:
-
-1. Place it at `audio/northline.mp3`.
-2. Change the Northline entry in `tracks.json` from:
-   - `"audio": "builtin:northline-demo"`
-   - `"demo": true`
-   to:
-   - `"audio": "audio/northline.mp3"`
-   - `"demo": false`
-3. For each remaining song, add the MP3 and set `"available": true`.
-4. Regenerate `tracks.generated.js` from the same JSON if file:// preview fallback is still desired.
+The player exposes loading, buffering, playback and error states, publishes duration and seek position to supported lock-screen controls, and keeps unavailable tracks fail-closed.
 
 ## Store catalog
 

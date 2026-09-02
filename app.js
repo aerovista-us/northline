@@ -25,7 +25,7 @@
     resetCatalog:$("resetCatalog"), bagButton:$("bagButton"), bagCount:$("bagCount"), cartDrawer:$("cartDrawer"),
     cartScrim:$("cartScrim"), cartClose:$("cartClose"), cartItems:$("cartItems"), cartEmpty:$("cartEmpty"),
     cartSummary:$("cartSummary"), cartSubtotal:$("cartSubtotal"), checkoutButton:$("checkoutButton"), checkoutStatus:$("checkoutStatus"),
-    toast:$("toast")
+    toast:$("toast"), transportCard:$("transportCard"), playbackStatus:$("playbackStatus")
   };
 
   const STORE_OVERRIDE_KEY = "echostory_northline_store_override_v1";
@@ -119,6 +119,40 @@
     return Boolean(track && track.available && audioUrl(track));
   }
 
+  function resolvedAudioUrl(track){
+    const src=audioUrl(track);
+    return src?new URL(src,document.baseURI).href:"";
+  }
+
+  function setPlaybackStatus(label,mode){
+    els.playbackStatus.textContent=label;
+    els.transportCard.dataset.playbackState=mode||"ready";
+  }
+
+  function updateSeekProgress(){
+    const duration=els.audio.duration;
+    const played=Number.isFinite(duration)&&duration>0?Math.min(100,els.audio.currentTime/duration*100):0;
+    let buffered=played;
+    if(Number.isFinite(duration)&&duration>0&&els.audio.buffered.length){
+      try{buffered=Math.min(100,els.audio.buffered.end(els.audio.buffered.length-1)/duration*100);}catch{}
+    }
+    els.seek.style.setProperty("--played",played.toFixed(2)+"%");
+    els.seek.style.setProperty("--buffered",Math.max(played,buffered).toFixed(2)+"%");
+  }
+
+  function updateMediaPosition(){
+    if(!("mediaSession" in navigator)||typeof navigator.mediaSession.setPositionState!=="function") return;
+    const duration=els.audio.duration;
+    if(!Number.isFinite(duration)||duration<=0) return;
+    try{
+      navigator.mediaSession.setPositionState({
+        duration,
+        playbackRate:els.audio.playbackRate||1,
+        position:Math.min(duration,Math.max(0,els.audio.currentTime||0))
+      });
+    }catch{}
+  }
+
   function renderTrackList(){
     els.trackList.textContent="";
     state.data.tracks.forEach((track,i)=>{
@@ -132,7 +166,7 @@
         <span class="track-num">${track.number}</span>
         <img class="track-thumb" alt="" src="${art(track.artKey)}">
         <span class="track-meta"><strong>${escapeHtml(track.title)}</strong><span>${escapeHtml(track.subtitle||"")}</span></span>
-        <span class="track-state ${isPlayable(track)?"ready":""}">${isPlayable(track)?(track.demo?"DEMO":"READY"):"MASTER PENDING"}</span>`;
+        <span class="track-state ${isPlayable(track)?"ready":""}">${isPlayable(track)?(track.demo?"DEMO":escapeHtml(track.durationLabel||"READY")):"MASTER PENDING"}</span>`;
       row.addEventListener("click",()=>selectTrack(i,false));
       row.addEventListener("keydown",(e)=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();selectTrack(i,false);}});
       els.trackList.appendChild(row);
@@ -182,17 +216,19 @@
     els.currentTime.textContent="0:00";
     els.duration.textContent=track.durationLabel && !isPlayable(track)?track.durationLabel:"0:00";
     if(isPlayable(track)){
-      const src=audioUrl(track);
-      if(els.audio.src!==src){
+      const src=audioUrl(track),resolved=resolvedAudioUrl(track);
+      if(els.audio.currentSrc!==resolved&&els.audio.src!==resolved){
         els.audio.src=src;
         els.audio.load();
       }
+      setPlaybackStatus("LOADING","loading");
       if(autoplay || wasPlaying) playCurrent();
     }else{
       els.audio.removeAttribute("src");
       els.audio.load();
       state.playing=false;
       setPlayState(false);
+      setPlaybackStatus("UNAVAILABLE","error");
       if(autoplay||wasPlaying) toast(`${track.title}: master MP3 is not loaded yet.`);
     }
     savePlayer();
@@ -257,6 +293,13 @@
     els.playIcon.textContent=on?"Ⅱ":"▶";
     els.playButton.setAttribute("aria-label",on?"Pause":"Play");
     els.artStage.classList.toggle("playing",on);
+    setPlaybackStatus(on?"PLAYING":"PAUSED",on?"playing":"paused");
+    const active=els.trackList.querySelector(".track-row.active .track-state");
+    if(active){
+      const track=currentTrack();
+      active.textContent=on?"PLAYING":(track?.demo?"DEMO":track?.durationLabel||"READY");
+    }
+    if("mediaSession" in navigator) navigator.mediaSession.playbackState=on?"playing":"paused";
   }
 
   function availableIndexes(){
@@ -298,6 +341,7 @@
     els.repeatButton.dataset.mode=state.repeat;
     els.repeatButton.textContent=state.repeat==="one"?"↻¹":state.repeat==="off"?"↻":"↻";
     els.repeatButton.title="Repeat: "+state.repeat;
+    els.repeatButton.setAttribute("aria-label","Repeat: "+state.repeat);
     savePlayer();
   }
 
@@ -608,16 +652,23 @@
     els.nextButton.addEventListener("click",()=>selectTrack(nextIndex(1),state.playing));
     els.shuffleButton.addEventListener("click",()=>{state.shuffle=!state.shuffle;updateShuffle();toast("Shuffle "+(state.shuffle?"on":"off"));});
     els.repeatButton.addEventListener("click",cycleRepeat);
+    els.audio.addEventListener("loadstart",()=>setPlaybackStatus("LOADING","loading"));
+    els.audio.addEventListener("waiting",()=>setPlaybackStatus("BUFFERING","loading"));
+    els.audio.addEventListener("stalled",()=>setPlaybackStatus("NETWORK DELAY","loading"));
+    els.audio.addEventListener("canplay",()=>{if(els.audio.paused)setPlaybackStatus("READY","ready");});
+    els.audio.addEventListener("playing",()=>setPlaybackStatus("PLAYING","playing"));
     els.audio.addEventListener("play",()=>setPlayState(true));
     els.audio.addEventListener("pause",()=>setPlayState(false));
     els.audio.addEventListener("ended",onEnded);
-    els.audio.addEventListener("loadedmetadata",()=>{els.duration.textContent=formatTime(els.audio.duration);});
+    els.audio.addEventListener("loadedmetadata",()=>{els.duration.textContent=formatTime(els.audio.duration);updateSeekProgress();updateMediaPosition();});
+    els.audio.addEventListener("progress",updateSeekProgress);
     els.audio.addEventListener("timeupdate",()=>{
       els.currentTime.textContent=formatTime(els.audio.currentTime);
       els.seek.value=String(els.audio.duration?Math.floor(els.audio.currentTime/els.audio.duration*1000):0);
+      updateSeekProgress();updateMediaPosition();
     });
-    els.audio.addEventListener("error",()=>{if(currentTrack()?.available)toast("Audio file could not be loaded.");});
-    els.seek.addEventListener("input",()=>{if(els.audio.duration)els.audio.currentTime=(Number(els.seek.value)/1000)*els.audio.duration;});
+    els.audio.addEventListener("error",()=>{setPlaybackStatus("AUDIO ERROR","error");if(currentTrack()?.available)toast("Audio file could not be loaded.");});
+    els.seek.addEventListener("input",()=>{if(els.audio.duration)els.audio.currentTime=(Number(els.seek.value)/1000)*els.audio.duration;updateSeekProgress();});
     els.volume.addEventListener("input",async()=>{
       if(state.gain)state.gain.gain.setTargetAtTime(Number(els.volume.value),state.audioCtx.currentTime,.03);
       else els.audio.volume=Number(els.volume.value);
@@ -664,6 +715,9 @@
         navigator.mediaSession.setActionHandler("previoustrack",()=>selectTrack(nextIndex(-1),true));
         navigator.mediaSession.setActionHandler("nexttrack",()=>selectTrack(nextIndex(1),true));
         navigator.mediaSession.setActionHandler("seekto",d=>{if(Number.isFinite(d.seekTime))els.audio.currentTime=d.seekTime;});
+        navigator.mediaSession.setActionHandler("seekbackward",d=>{els.audio.currentTime=Math.max(0,els.audio.currentTime-(d.seekOffset||10));});
+        navigator.mediaSession.setActionHandler("seekforward",d=>{els.audio.currentTime=Math.min(els.audio.duration||Infinity,els.audio.currentTime+(d.seekOffset||10));});
+        navigator.mediaSession.setActionHandler("stop",()=>{els.audio.pause();els.audio.currentTime=0;});
       }catch{}
     }
   }
@@ -674,7 +728,7 @@
     restoreStoreOverride();
     loadSavedPlayer();loadCart();
     els.vizMode.textContent=vizModes[state.vizMode];
-    els.repeatButton.dataset.mode=state.repeat;els.repeatButton.title="Repeat: "+state.repeat;
+    els.repeatButton.dataset.mode=state.repeat;els.repeatButton.title="Repeat: "+state.repeat;els.repeatButton.setAttribute("aria-label","Repeat: "+state.repeat);
     updateShuffle();
     els.collectionDescription.textContent=state.data.album.collectionDescription||"";
     els.storeAdmin.hidden=!new URLSearchParams(location.search).has("admin");
