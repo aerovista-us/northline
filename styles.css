@@ -282,7 +282,7 @@ footer strong{color:#aab6c3;text-transform:uppercase;letter-spacing:.12em}
 @media(min-width:720px){
   main{padding:26px 18px 100px}
   .topbar{padding:0 26px}
-  .section-nav{width:max-content;left:50%;transform:translateX(-50%);top:12px;position:fixed;border:1px solid rgba(255,255,255,.10);border-radius:999px;overflow:hidden;background:rgba(5,7,10,.72)}
+  .section-nav{width:max-content;left:50%;transform:translateX(-50%);top:12px;position:fixed;z-index:45;border:1px solid rgba(255,255,255,.10);border-radius:999px;overflow:hidden;background:rgba(5,7,10,.88)}
   .section-nav button{width:110px;border-bottom:0}
   .section-nav button.active{background:rgba(18,153,255,.11)}
   .player-shell{grid-template-columns:minmax(0,1.12fr) minmax(320px,.88fr);align-items:start}
