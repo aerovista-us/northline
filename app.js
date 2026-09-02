@@ -438,7 +438,7 @@
       const ready=Boolean(variant&&variant.checkoutReady&&variant.cartKey&&variant.squareVariationId);
       const sizeOptions=variants.map(v=>`<option value="${escapeHtml(v.id)}">${escapeHtml(v.label)} · ${money(v.priceCents,state.store.currency)}</option>`).join("");
       card.innerHTML=`
-        <div class="product-art"><img src="${escapeHtml(productImage(product))}" alt="${escapeHtml(product.title)}"></div>
+        <div class="product-art${product.image?" product-art--light":""}"><img src="${escapeHtml(productImage(product))}" alt="${escapeHtml(product.title)}"></div>
         <div class="product-info">
           <div class="product-top">
             <div><p>${escapeHtml(product.subtitle||"")}</p><h2>${escapeHtml(product.title)}</h2></div>
