@@ -3,50 +3,48 @@
   "channel": "northline",
   "currency": "USD",
   "apiOrigin": "https://api.aerovista.us",
-  "updated": "2026-09-01",
+  "updated": "2026-09-02",
   "collection": {
     "title": "AeroVista Northline Collection",
-    "description": "AeroVista found in the landscape—technical enough to belong to the brand, restrained enough to feel timeless."
+    "description": "Wear the landscapes behind the Northline sound—four black tees drawn from the same mountain, moonlight, and electric-blue visual world."
   },
   "products": [
     {
       "id": "NL-01",
       "slug": "blue-divide",
-      "title": "Blue Divide",
+      "title": "Blue Divide Tee",
       "artKey": "blue-divide",
-      "subtitle": "Northline 01",
+      "image": "assets/products/blue-divide-tee.png",
+      "subtitle": "Northline 01 · Black",
       "description": "Moonlit alpine lake, cold peaks, dark timber, and a hidden apex in the reflection.",
       "publicVisible": true,
-      "checkoutReady": false,
+      "checkoutReady": true,
       "variants": [
-        {
-          "id": "NL-01-TEE",
-          "label": "Apparel release",
-          "priceCents": 0,
-          "cartKey": "",
-          "squareVariationId": "",
-          "checkoutReady": false
-        }
+        {"id":"NL-01-S","label":"S","color":"Black","priceCents":3299,"cartKey":"Black__S","squareVariationId":"SJACB3RVWKJBO5QG4C6WFW3E","checkoutReady":true},
+        {"id":"NL-01-M","label":"M","color":"Black","priceCents":3299,"cartKey":"Black__M","squareVariationId":"QPQITWRJTMHCU4EPJ7GBGCMS","checkoutReady":true},
+        {"id":"NL-01-L","label":"L","color":"Black","priceCents":3299,"cartKey":"Black__L","squareVariationId":"MV5MDSJ54KRDFIZ2M67FJLXO","checkoutReady":true},
+        {"id":"NL-01-XL","label":"XL","color":"Black","priceCents":3299,"cartKey":"Black__XL","squareVariationId":"QU2QJ67SEJEEM6INQDTBMQRX","checkoutReady":true},
+        {"id":"NL-01-2XL","label":"2XL","color":"Black","priceCents":3299,"cartKey":"Black__2XL","squareVariationId":"LEGSOWBOIYG2W2NWJUY7HD34","checkoutReady":true},
+        {"id":"NL-01-3XL","label":"3XL","color":"Black","priceCents":3299,"cartKey":"Black__3XL","squareVariationId":"6BA4LZWLROFJZN2ECJBNVJ54","checkoutReady":true}
       ]
     },
     {
       "id": "NL-02",
       "slug": "ridgeline",
-      "title": "Ridgeline",
+      "title": "Ridgeline Tee",
       "artKey": "ridgeline",
-      "subtitle": "Northline 02",
-      "description": "A wide panoramic mountain study built for broad chest and jacket-back placement.",
+      "image": "assets/products/ridgeline-tee.png",
+      "subtitle": "Northline 02 · Black",
+      "description": "A wide panoramic mountain study built for broad chest placement.",
       "publicVisible": true,
-      "checkoutReady": false,
+      "checkoutReady": true,
       "variants": [
-        {
-          "id": "NL-02-TEE",
-          "label": "Apparel release",
-          "priceCents": 0,
-          "cartKey": "",
-          "squareVariationId": "",
-          "checkoutReady": false
-        }
+        {"id":"NL-02-S","label":"S","color":"Black","priceCents":3299,"cartKey":"Black__S","squareVariationId":"XGUYOGR2VIIMAFE2WPMLZ4QF","checkoutReady":true},
+        {"id":"NL-02-M","label":"M","color":"Black","priceCents":3299,"cartKey":"Black__M","squareVariationId":"4AR33BQFYNI7LP5S5JSILPJN","checkoutReady":true},
+        {"id":"NL-02-L","label":"L","color":"Black","priceCents":3299,"cartKey":"Black__L","squareVariationId":"JXM7NTL5EX7BEX3CNXC32NFK","checkoutReady":true},
+        {"id":"NL-02-XL","label":"XL","color":"Black","priceCents":3299,"cartKey":"Black__XL","squareVariationId":"KCSKHXS5UN36V6R3ZIAHEW6Y","checkoutReady":true},
+        {"id":"NL-02-2XL","label":"2XL","color":"Black","priceCents":3299,"cartKey":"Black__2XL","squareVariationId":"LDNPTVHS74QFRUQJ7QCLZZDU","checkoutReady":true},
+        {"id":"NL-02-3XL","label":"3XL","color":"Black","priceCents":3299,"cartKey":"Black__3XL","squareVariationId":"NDDDXI7VIOMO5MLJC6FVX42A","checkoutReady":true}
       ]
     },
     {
@@ -59,54 +57,45 @@
       "publicVisible": true,
       "checkoutReady": false,
       "variants": [
-        {
-          "id": "NL-03-TEE",
-          "label": "Apparel release",
-          "priceCents": 0,
-          "cartKey": "",
-          "squareVariationId": "",
-          "checkoutReady": false
-        }
+        {"id":"NL-03-TEE","label":"Release pending","priceCents":0,"cartKey":"","squareVariationId":"","checkoutReady":false}
       ]
     },
     {
       "id": "NL-04",
       "slug": "powderline",
-      "title": "Powderline",
+      "title": "Powderline Tee",
       "artKey": "powderline",
-      "subtitle": "Northline 04",
+      "image": "assets/products/powderline-tee.png",
+      "subtitle": "Northline 04 · Black",
       "description": "A steep winter face marked by a single electric path through the snow.",
       "publicVisible": true,
-      "checkoutReady": false,
+      "checkoutReady": true,
       "variants": [
-        {
-          "id": "NL-04-TEE",
-          "label": "Apparel release",
-          "priceCents": 0,
-          "cartKey": "",
-          "squareVariationId": "",
-          "checkoutReady": false
-        }
+        {"id":"NL-04-S","label":"S","color":"Black","priceCents":1950,"cartKey":"Black__S","squareVariationId":"ZBQSW2IFBK26H3YMZXMVOUT5","checkoutReady":true},
+        {"id":"NL-04-M","label":"M","color":"Black","priceCents":1950,"cartKey":"Black__M","squareVariationId":"C5LU3SC547O4WVYJ6N6F2YTT","checkoutReady":true},
+        {"id":"NL-04-L","label":"L","color":"Black","priceCents":1950,"cartKey":"Black__L","squareVariationId":"3HOVH4XOWXJJHRZ53JJSWB5B","checkoutReady":true},
+        {"id":"NL-04-XL","label":"XL","color":"Black","priceCents":1950,"cartKey":"Black__XL","squareVariationId":"H6JA4LHLU7RBZL47ZPW4N3WS","checkoutReady":true},
+        {"id":"NL-04-2XL","label":"2XL","color":"Black","priceCents":2250,"cartKey":"Black__2XL","squareVariationId":"BXP5YM4JFUKC5HWV2U7CTSXD","checkoutReady":true},
+        {"id":"NL-04-3XL","label":"3XL","color":"Black","priceCents":2500,"cartKey":"Black__3XL","squareVariationId":"NKLKMBS6H6YU5S4O4WZESSXU","checkoutReady":true}
       ]
     },
     {
       "id": "NL-05",
       "slug": "source-code",
-      "title": "Source Code",
+      "title": "Source Code Tee",
       "artKey": "source-code",
-      "subtitle": "Northline 05",
+      "image": "assets/products/source-code-tee.png",
+      "subtitle": "Northline 05 · Black",
       "description": "Mountain field insignia meets AeroVista systems language and hidden geometry.",
       "publicVisible": true,
-      "checkoutReady": false,
+      "checkoutReady": true,
       "variants": [
-        {
-          "id": "NL-05-TEE",
-          "label": "Apparel release",
-          "priceCents": 0,
-          "cartKey": "",
-          "squareVariationId": "",
-          "checkoutReady": false
-        }
+        {"id":"NL-05-S","label":"S","color":"Black","priceCents":3299,"cartKey":"Black__S","squareVariationId":"XT3HCJXVZ6O5LCPCUWVW7VPO","checkoutReady":true},
+        {"id":"NL-05-M","label":"M","color":"Black","priceCents":3299,"cartKey":"Black__M","squareVariationId":"KATG2NXR5DISU24J5ZRKPBQT","checkoutReady":true},
+        {"id":"NL-05-L","label":"L","color":"Black","priceCents":3299,"cartKey":"Black__L","squareVariationId":"LNT7CQAMNJIECOZWX6Z7PC6T","checkoutReady":true},
+        {"id":"NL-05-XL","label":"XL","color":"Black","priceCents":3299,"cartKey":"Black__XL","squareVariationId":"DSISRWEDFTMRVR4N6ZOBQ7SB","checkoutReady":true},
+        {"id":"NL-05-2XL","label":"2XL","color":"Black","priceCents":3299,"cartKey":"Black__2XL","squareVariationId":"UNA2PQII6NUIMZOBAXARJRS6","checkoutReady":true},
+        {"id":"NL-05-3XL","label":"3XL","color":"Black","priceCents":3299,"cartKey":"Black__3XL","squareVariationId":"T26TEPZ7PXOUDMIKNWV4RUSG","checkoutReady":true}
       ]
     }
   ]

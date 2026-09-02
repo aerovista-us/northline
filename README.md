@@ -92,9 +92,8 @@ The browser build uses optimized WebP artwork in `assets/art/`. The included fil
 
 ## Production hardening before public launch
 
-- Replace the demo bed with the approved Suno master.
-- Add the five remaining MP3 masters.
-- Replace placeholder store products with production garment/Square mappings.
+- Confirm the four mapped Northline tees against the production Square checkout bootstrap.
+- Add the Idaho After Dark garment and Square variations when its product export arrives.
 - Run real iOS Safari and Android Chrome audio tests.
 - Confirm CORS on `api.aerovista.us` allows the EchoStory origin.
 - Add Umami/analytics only after the final event taxonomy is agreed.

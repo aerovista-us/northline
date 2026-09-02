@@ -28,7 +28,7 @@
     toast:$("toast"), transportCard:$("transportCard"), playbackStatus:$("playbackStatus")
   };
 
-  const STORE_OVERRIDE_KEY = "echostory_northline_store_override_v1";
+  const STORE_OVERRIDE_KEY = "echostory_northline_store_override_v2";
   const CART_KEY = "echostory_northline_cart_v1";
   const PLAYER_KEY = "echostory_northline_player_v1";
 
@@ -77,6 +77,7 @@
   }
 
   function art(key){ return ART[key] || ("assets/art/"+key+".webp"); }
+  function productImage(product){ return product.image || art(product.artKey); }
 
   async function fetchJson(path, fallback){
     if(location.protocol !== "file:"){
@@ -430,22 +431,37 @@
     els.storeGrid.textContent="";
     const products=(state.store.products||[]).filter(p=>p.publicVisible!==false);
     products.forEach(product=>{
+      const variants=product.variants||[];
       const variant=preferredVariant(product);
       const card=document.createElement("article");
       card.className="product-card";
       const ready=Boolean(variant&&variant.checkoutReady&&variant.cartKey&&variant.squareVariationId);
+      const sizeOptions=variants.map(v=>`<option value="${escapeHtml(v.id)}">${escapeHtml(v.label)} · ${money(v.priceCents,state.store.currency)}</option>`).join("");
       card.innerHTML=`
-        <div class="product-art"><img src="${art(product.artKey)}" alt="${escapeHtml(product.title)} design"></div>
+        <div class="product-art"><img src="${escapeHtml(productImage(product))}" alt="${escapeHtml(product.title)}"></div>
         <div class="product-info">
           <div class="product-top">
             <div><p>${escapeHtml(product.subtitle||"")}</p><h2>${escapeHtml(product.title)}</h2></div>
             <p class="price">${money(variant?.priceCents,state.store.currency)}</p>
           </div>
           <p>${escapeHtml(product.description||"")}</p>
-          <button class="product-action" ${ready?"":"disabled"}>${ready?"Add to bag":"Square mapping pending"}</button>
+          ${variants.length>1?`<label class="variant-picker"><span>Choose size</span><select aria-label="Choose ${escapeHtml(product.title)} size">${sizeOptions}</select></label>`:""}
+          <button class="product-action" ${ready?"":"disabled"}>${ready?"Add to bag":"Release pending"}</button>
         </div>`;
       const btn=card.querySelector(".product-action");
-      if(ready) btn.addEventListener("click",()=>addToCart(product,variant));
+      const select=card.querySelector("select");
+      const price=card.querySelector(".price");
+      const selectedVariant=()=>variants.find(v=>v.id===(select?.value||variant?.id))||variant;
+      const syncVariant=()=>{
+        const selected=selectedVariant();
+        const selectedReady=Boolean(selected&&selected.checkoutReady&&selected.cartKey&&selected.squareVariationId);
+        price.textContent=money(selected?.priceCents,state.store.currency);
+        btn.disabled=!selectedReady;
+        btn.textContent=selectedReady?"Add to bag":"Release pending";
+      };
+      if(select){select.value=variant?.id||variants[0]?.id||"";select.addEventListener("change",syncVariant);}
+      btn.addEventListener("click",()=>{const selected=selectedVariant();if(selected&&!btn.disabled)addToCart(product,selected);});
+      syncVariant();
       els.storeGrid.appendChild(card);
     });
   }
@@ -479,7 +495,7 @@
       total+=(line.variant.priceCents||0)*(line.item.qty||1);
       const row=document.createElement("div");
       row.className="cart-line";
-      row.innerHTML=`<img src="${art(line.product.artKey)}" alt=""><div><strong>${escapeHtml(line.product.title)}</strong><span>${escapeHtml(line.variant.label)} · Qty ${line.item.qty||1}</span></div><button aria-label="Remove">×</button>`;
+      row.innerHTML=`<img src="${escapeHtml(productImage(line.product))}" alt=""><div><strong>${escapeHtml(line.product.title)}</strong><span>${escapeHtml(line.variant.label)} · Qty ${line.item.qty||1}</span></div><button aria-label="Remove">×</button>`;
       row.querySelector("button").addEventListener("click",()=>{state.cart=state.cart.filter(x=>x!==line.item);saveCart();});
       els.cartItems.appendChild(row);
     });
@@ -514,6 +530,7 @@
       const body={
         currency:bootstrap.currency||state.store.currency||"USD",
         cart:lines.map(l=>({
+          productId:l.product.id,
           sku:l.variant.cartKey,
           variationId:l.variant.squareVariationId,
           qty:l.item.qty||1,
