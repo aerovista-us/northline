@@ -450,11 +450,43 @@
   function renderStore(){
     els.storeGrid.textContent="";
     const products=(state.store.products||[]).filter(p=>p.publicVisible!==false);
-    products.forEach(product=>{
+    const isHat=product=>/hat|cap/i.test(`${product.slug||""} ${product.title||""}`);
+    const groups=[
+      {
+        id:"northline-tees",
+        kicker:"THE NORTHLINE SERIES",
+        title:"Choose your chapter.",
+        description:"Six black tees, each carrying one scene from the Northline visual story.",
+        count:"06 DESIGNS",
+        products:products.filter(product=>!isHat(product)),
+        gridClass:"store-grid--tees"
+      },
+      {
+        id:"northline-caps",
+        kicker:"FIELD GEAR",
+        title:"Embroidered caps.",
+        description:"Structured Northline headwear for the road, the trail, and everywhere between.",
+        count:"02 EDITIONS",
+        products:products.filter(isHat),
+        gridClass:"store-grid--hats"
+      }
+    ];
+    groups.filter(group=>group.products.length).forEach(group=>{
+      const section=document.createElement("section");
+      section.className="store-collection";
+      section.setAttribute("aria-labelledby",group.id);
+      section.innerHTML=`
+        <div class="collection-head">
+          <div><p class="eyebrow">${group.kicker}</p><h2 id="${group.id}">${group.title}</h2><p>${group.description}</p></div>
+          <span>${group.count}</span>
+        </div>
+        <div class="store-grid ${group.gridClass}"></div>`;
+      const grid=section.querySelector(".store-grid");
+      group.products.forEach(product=>{
       const variants=product.variants||[];
       const variant=preferredVariant(product);
       const card=document.createElement("article");
-      card.className="product-card";
+      card.className=`product-card${isHat(product)?" product-card--hat":""}`;
       const ready=Boolean(variant&&variant.checkoutReady&&variant.cartKey&&variant.squareVariationId);
       const imageScale=Math.min(2,Math.max(1,Number(product.imageScale)||1));
       const imageY=Math.min(15,Math.max(-15,Number(product.imageY)||0));
@@ -484,7 +516,9 @@
       if(select){select.value=variant?.id||variants[0]?.id||"";select.addEventListener("change",syncVariant);}
       btn.addEventListener("click",()=>{const selected=selectedVariant();if(selected&&!btn.disabled)addToCart(product,selected);});
       syncVariant();
-      els.storeGrid.appendChild(card);
+      grid.appendChild(card);
+      });
+      els.storeGrid.appendChild(section);
     });
   }
 
