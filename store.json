@@ -6,7 +6,7 @@
   "updated": "2026-09-02",
   "collection": {
     "title": "AeroVista Northline Collection",
-    "description": "Wear the landscapes behind the Northline sound—four black tees drawn from the same mountain, moonlight, and electric-blue visual world."
+    "description": "Wear the landscapes behind the Northline sound—five tees and an embroidered field cap drawn from the same mountain, moonlight, and electric-blue visual world."
   },
   "products": [
     {
@@ -50,14 +50,20 @@
     {
       "id": "NL-03",
       "slug": "idaho-after-dark",
-      "title": "Idaho After Dark",
+      "title": "Idaho After Dark Tee",
       "artKey": "idaho-after-dark",
-      "subtitle": "Northline 03",
+      "image": "assets/products/idaho-after-dark-tee.png",
+      "subtitle": "Northline 03 · Black",
       "description": "A moonlit North Idaho expedition badge with hidden local details.",
       "publicVisible": true,
-      "checkoutReady": false,
+      "checkoutReady": true,
       "variants": [
-        {"id":"NL-03-TEE","label":"Release pending","priceCents":0,"cartKey":"","squareVariationId":"","checkoutReady":false}
+        {"id":"NL-03-S","label":"S","color":"Black","priceCents":3299,"cartKey":"Black__S","squareVariationId":"3OGXGQVSJCHRSXVASHMFP6VV","checkoutReady":true},
+        {"id":"NL-03-M","label":"M","color":"Black","priceCents":3299,"cartKey":"Black__M","squareVariationId":"GMBBP2TEA7OIABKYR3CI66YO","checkoutReady":true},
+        {"id":"NL-03-L","label":"L","color":"Black","priceCents":3299,"cartKey":"Black__L","squareVariationId":"EIZ5BAOVUM2BZ6BPAUFYORWV","checkoutReady":true},
+        {"id":"NL-03-XL","label":"XL","color":"Black","priceCents":3299,"cartKey":"Black__XL","squareVariationId":"BLEQGFBSBNABRLG4GN7IWPYC","checkoutReady":true},
+        {"id":"NL-03-2XL","label":"2XL","color":"Black","priceCents":3299,"cartKey":"Black__2XL","squareVariationId":"TBXBKC4WEFRA5GKXH55G5SNG","checkoutReady":true},
+        {"id":"NL-03-3XL","label":"3XL","color":"Black","priceCents":3299,"cartKey":"Black__3XL","squareVariationId":"D2KRJJ5HDPQQV2M5H437MZAG","checkoutReady":true}
       ]
     },
     {
@@ -96,6 +102,20 @@
         {"id":"NL-05-XL","label":"XL","color":"Black","priceCents":3299,"cartKey":"Black__XL","squareVariationId":"DSISRWEDFTMRVR4N6ZOBQ7SB","checkoutReady":true},
         {"id":"NL-05-2XL","label":"2XL","color":"Black","priceCents":3299,"cartKey":"Black__2XL","squareVariationId":"UNA2PQII6NUIMZOBAXARJRS6","checkoutReady":true},
         {"id":"NL-05-3XL","label":"3XL","color":"Black","priceCents":3299,"cartKey":"Black__3XL","squareVariationId":"T26TEPZ7PXOUDMIKNWV4RUSG","checkoutReady":true}
+      ]
+    },
+    {
+      "id": "NL-06",
+      "slug": "built-behind-the-scenes-hat",
+      "title": "Built Behind the Scenes Hat",
+      "artKey": "built-behind-the-scenes",
+      "image": "assets/products/built-behind-the-scenes-hat.jpeg",
+      "subtitle": "Northline Field Gear · Heather Grey / White",
+      "description": "A Richardson 112 trucker cap embroidered with the mountain-apex landscape behind the Northline sound.",
+      "publicVisible": true,
+      "checkoutReady": true,
+      "variants": [
+        {"id":"NL-06-ONE","label":"One Size","color":"Heather Grey / White","priceCents":3899,"cartKey":"Gray__One Size","squareVariationId":"NGL72ITOR4SWK5DR5KY5QM6T","checkoutReady":true}
       ]
     }
   ]

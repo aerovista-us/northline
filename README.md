@@ -92,8 +92,8 @@ The browser build uses optimized WebP artwork in `assets/art/`. The included fil
 
 ## Production hardening before public launch
 
-- Confirm the four mapped Northline tees against the production Square checkout bootstrap.
-- Add the Idaho After Dark garment and Square variations when its product export arrives.
+- Keep the five mapped Northline tees and embroidered cap aligned with the production Square checkout bootstrap.
+- Use square, product-only catalog images on the shared white product-card surface.
 - Run real iOS Safari and Android Chrome audio tests.
 - Confirm CORS on `api.aerovista.us` allows the EchoStory origin.
 - Add Umami/analytics only after the final event taxonomy is agreed.
