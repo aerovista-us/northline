@@ -22,7 +22,7 @@
     modalSubtitle:$("modalSubtitle"), modalTitle:$("modalTitle"), modalStory:$("modalStory"), listenFromStory:$("listenFromStory"),
     fullscreenViz:$("fullscreenViz"), vizOverlay:$("vizOverlay"), closeViz:$("closeViz"), fullTrackNumber:$("fullTrackNumber"),
     fullTrackTitle:$("fullTrackTitle"), storeGrid:$("storeGrid"), storeAdmin:$("storeAdmin"), catalogImport:$("catalogImport"),
-    resetCatalog:$("resetCatalog"), bagButton:$("bagButton"), bagCount:$("bagCount"), cartDrawer:$("cartDrawer"),
+    resetCatalog:$("resetCatalog"), shareButton:$("shareButton"), bagButton:$("bagButton"), bagCount:$("bagCount"), cartDrawer:$("cartDrawer"),
     cartScrim:$("cartScrim"), cartClose:$("cartClose"), cartItems:$("cartItems"), cartEmpty:$("cartEmpty"),
     cartSummary:$("cartSummary"), cartSubtotal:$("cartSubtotal"), checkoutButton:$("checkoutButton"), checkoutStatus:$("checkoutStatus"),
     toast:$("toast"), transportCard:$("transportCard"), playbackStatus:$("playbackStatus")
@@ -118,6 +118,26 @@
 
   function isPlayable(track){
     return Boolean(track && track.available && audioUrl(track));
+  }
+
+  async function shareNorthline(){
+    const shareData={
+      title:"Northline — EchoVerse Audio",
+      text:"Listen to Northline and explore the AeroVista collection.",
+      url:location.href
+    };
+    if(navigator.share){
+      try{await navigator.share(shareData);return;}catch(err){if(err?.name==="AbortError")return;}
+    }
+    try{
+      await navigator.clipboard.writeText(shareData.url);
+      toast("Northline link copied.");
+    }catch{
+      const field=document.createElement("textarea");
+      field.value=shareData.url;field.setAttribute("readonly","");field.style.position="fixed";field.style.opacity="0";
+      document.body.appendChild(field);field.select();document.execCommand("copy");field.remove();
+      toast("Northline link copied.");
+    }
   }
 
   function resolvedAudioUrl(track){
@@ -436,7 +456,7 @@
       const card=document.createElement("article");
       card.className="product-card";
       const ready=Boolean(variant&&variant.checkoutReady&&variant.cartKey&&variant.squareVariationId);
-      const imageScale=Math.min(1.5,Math.max(1,Number(product.imageScale)||1));
+      const imageScale=Math.min(2,Math.max(1,Number(product.imageScale)||1));
       const imageY=Math.min(15,Math.max(-15,Number(product.imageY)||0));
       const sizeOptions=variants.map(v=>`<option value="${escapeHtml(v.id)}">${escapeHtml(v.label)} · ${money(v.priceCents,state.store.currency)}</option>`).join("");
       card.innerHTML=`
@@ -666,6 +686,7 @@
 
   function initEvents(){
     document.querySelectorAll(".section-nav button").forEach(btn=>btn.addEventListener("click",()=>setView(btn.dataset.view)));
+    els.shareButton.addEventListener("click",shareNorthline);
     els.playButton.addEventListener("click",()=>{if(els.audio.paused)playCurrent();else els.audio.pause();});
     els.prevButton.addEventListener("click",()=>selectTrack(nextIndex(-1),state.playing));
     els.nextButton.addEventListener("click",()=>selectTrack(nextIndex(1),state.playing));

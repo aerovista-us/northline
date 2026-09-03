@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#050608">
   <meta name="description" content="Northline — an immersive EchoStory by EchoVerse Audio and AeroVista.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://northline.aerovista.us/">
+  <meta property="og:title" content="Northline — EchoVerse Audio">
+  <meta property="og:description" content="Listen to Northline and explore the AeroVista collection shaped by mountain, moonlight, and signal.">
+  <meta property="og:image" content="https://northline.aerovista.us/assets/share/northline-share.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Northline by AeroVista over a moonlit alpine lake">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Northline — EchoVerse Audio">
+  <meta name="twitter:description" content="Listen to Northline and explore the AeroVista collection shaped by mountain, moonlight, and signal.">
+  <meta name="twitter:image" content="https://northline.aerovista.us/assets/share/northline-share.png">
   <title>Northline — EchoVerse Audio | An AeroVista Production</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -25,9 +37,15 @@
         <small>AN AEROVISTA PRODUCTION</small>
       </span>
     </a>
-    <button class="icon-btn bag-btn" id="bagButton" aria-label="Open store bag">
-      <span>Bag</span><b id="bagCount">0</b>
-    </button>
+    <div class="topbar-actions">
+      <button class="icon-btn share-btn" id="shareButton" aria-label="Share Northline">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a3 3 0 1 0-2.83-4A3 3 0 0 0 15 5c0 .2.02.4.06.59L8.9 9.1A3 3 0 0 0 7 8.42a3 3 0 1 0 1.9 5.48l6.16 3.51A3 3 0 0 0 15 18a3 3 0 1 0 .84-2.08l-6.1-3.48A3 3 0 0 0 10 11c0-.2-.02-.4-.06-.59l6.16-3.51A3 3 0 0 0 18 8Z"/></svg>
+        <span>Share</span>
+      </button>
+      <button class="icon-btn bag-btn" id="bagButton" aria-label="Open store bag">
+        <span>Bag</span><b id="bagCount">0</b>
+      </button>
+    </div>
   </header>
 
   <nav class="section-nav" aria-label="EchoStory sections">

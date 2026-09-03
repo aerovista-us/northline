@@ -76,6 +76,9 @@ img{display:block;max-width:100%}
   cursor:pointer;transition:.2s ease;
 }
 .icon-btn:hover{background:rgba(255,255,255,.09);border-color:var(--line-strong)}
+.topbar-actions{display:flex;align-items:center;gap:8px}
+.share-btn{font-size:10px;text-transform:uppercase;letter-spacing:.13em}
+.share-btn svg{width:16px;height:16px;fill:currentColor;flex:0 0 auto}
 .bag-btn{font-size:11px;text-transform:uppercase;letter-spacing:.14em}
 .bag-btn b{display:grid;place-items:center;min-width:22px;height:22px;border-radius:999px;background:var(--blue);color:#04101a;font-size:11px}
 .section-nav{
@@ -299,6 +302,11 @@ footer strong{color:#aab6c3;text-transform:uppercase;letter-spacing:.12em}
   .store-hero{flex-direction:row;align-items:end;justify-content:space-between}
   footer{flex-direction:row;justify-content:space-between}
   .story-modal-card{left:50%;right:auto;bottom:50%;transform:translate(-50%,50%);width:min(720px,92vw);padding:20px}
+}
+@media(max-width:430px){
+  .brand-copy small{display:none}
+  .share-btn{width:40px;padding:0}
+  .share-btn span{display:none}
 }
 @media(min-width:1050px){
   .story-grid{grid-template-columns:repeat(6,1fr)}
