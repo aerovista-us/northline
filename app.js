@@ -436,9 +436,11 @@
       const card=document.createElement("article");
       card.className="product-card";
       const ready=Boolean(variant&&variant.checkoutReady&&variant.cartKey&&variant.squareVariationId);
+      const imageScale=Math.min(1.5,Math.max(1,Number(product.imageScale)||1));
+      const imageY=Math.min(15,Math.max(-15,Number(product.imageY)||0));
       const sizeOptions=variants.map(v=>`<option value="${escapeHtml(v.id)}">${escapeHtml(v.label)} · ${money(v.priceCents,state.store.currency)}</option>`).join("");
       card.innerHTML=`
-        <div class="product-art${product.image?" product-art--light":""}"><img src="${escapeHtml(productImage(product))}" alt="${escapeHtml(product.title)}"></div>
+        <div class="product-art${product.image?" product-art--light":""}" style="--product-scale:${imageScale};--product-y:${imageY}%"><img src="${escapeHtml(productImage(product))}" alt="${escapeHtml(product.title)}"></div>
         <div class="product-info">
           <div class="product-top">
             <div><p>${escapeHtml(product.subtitle||"")}</p><h2>${escapeHtml(product.title)}</h2></div>
