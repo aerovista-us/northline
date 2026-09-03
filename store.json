@@ -6,7 +6,7 @@
   "updated": "2026-09-02",
   "collection": {
     "title": "AeroVista Northline Collection",
-    "description": "Wear the landscapes behind the Northline sound—five tees and an embroidered field cap drawn from the same mountain, moonlight, and electric-blue visual world."
+    "description": "Wear the landscapes behind the Northline sound—six tees and two embroidered field caps drawn from the same mountain, moonlight, and electric-blue visual world."
   },
   "products": [
     {
@@ -43,12 +43,12 @@
       "publicVisible": true,
       "checkoutReady": true,
       "variants": [
-        {"id":"NL-02-S","label":"S","color":"Black","priceCents":3299,"cartKey":"Black__S","squareVariationId":"XGUYOGR2VIIMAFE2WPMLZ4QF","checkoutReady":true},
-        {"id":"NL-02-M","label":"M","color":"Black","priceCents":3299,"cartKey":"Black__M","squareVariationId":"4AR33BQFYNI7LP5S5JSILPJN","checkoutReady":true},
-        {"id":"NL-02-L","label":"L","color":"Black","priceCents":3299,"cartKey":"Black__L","squareVariationId":"JXM7NTL5EX7BEX3CNXC32NFK","checkoutReady":true},
-        {"id":"NL-02-XL","label":"XL","color":"Black","priceCents":3299,"cartKey":"Black__XL","squareVariationId":"KCSKHXS5UN36V6R3ZIAHEW6Y","checkoutReady":true},
-        {"id":"NL-02-2XL","label":"2XL","color":"Black","priceCents":3299,"cartKey":"Black__2XL","squareVariationId":"LDNPTVHS74QFRUQJ7QCLZZDU","checkoutReady":true},
-        {"id":"NL-02-3XL","label":"3XL","color":"Black","priceCents":3299,"cartKey":"Black__3XL","squareVariationId":"NDDDXI7VIOMO5MLJC6FVX42A","checkoutReady":true}
+        {"id":"NL-02-S","label":"S","color":"Black","priceCents":3299,"cartKey":"Black__S","squareVariationId":"CYMAIUALBD5E65AY64AE33CS","checkoutReady":true},
+        {"id":"NL-02-M","label":"M","color":"Black","priceCents":3299,"cartKey":"Black__M","squareVariationId":"O2PBIW3ZFICUWL744XBMWF6M","checkoutReady":true},
+        {"id":"NL-02-L","label":"L","color":"Black","priceCents":3299,"cartKey":"Black__L","squareVariationId":"NBNGEDAQOGUPGL36U7X2GFF4","checkoutReady":true},
+        {"id":"NL-02-XL","label":"XL","color":"Black","priceCents":3299,"cartKey":"Black__XL","squareVariationId":"YVNXA66P6NXRB4CWRPTFY2LQ","checkoutReady":true},
+        {"id":"NL-02-2XL","label":"2XL","color":"Black","priceCents":3299,"cartKey":"Black__2XL","squareVariationId":"32C6BQLJNN65CFGROOAAKPAO","checkoutReady":true},
+        {"id":"NL-02-3XL","label":"3XL","color":"Black","priceCents":3299,"cartKey":"Black__3XL","squareVariationId":"SVQM45FKPPLJDPAVVOBQ5SSF","checkoutReady":true}
       ]
     },
     {
@@ -85,12 +85,12 @@
       "publicVisible": true,
       "checkoutReady": true,
       "variants": [
-        {"id":"NL-04-S","label":"S","color":"Black","priceCents":1950,"cartKey":"Black__S","squareVariationId":"ZBQSW2IFBK26H3YMZXMVOUT5","checkoutReady":true},
-        {"id":"NL-04-M","label":"M","color":"Black","priceCents":1950,"cartKey":"Black__M","squareVariationId":"C5LU3SC547O4WVYJ6N6F2YTT","checkoutReady":true},
-        {"id":"NL-04-L","label":"L","color":"Black","priceCents":1950,"cartKey":"Black__L","squareVariationId":"3HOVH4XOWXJJHRZ53JJSWB5B","checkoutReady":true},
-        {"id":"NL-04-XL","label":"XL","color":"Black","priceCents":1950,"cartKey":"Black__XL","squareVariationId":"H6JA4LHLU7RBZL47ZPW4N3WS","checkoutReady":true},
-        {"id":"NL-04-2XL","label":"2XL","color":"Black","priceCents":2250,"cartKey":"Black__2XL","squareVariationId":"BXP5YM4JFUKC5HWV2U7CTSXD","checkoutReady":true},
-        {"id":"NL-04-3XL","label":"3XL","color":"Black","priceCents":2500,"cartKey":"Black__3XL","squareVariationId":"NKLKMBS6H6YU5S4O4WZESSXU","checkoutReady":true}
+        {"id":"NL-04-S","label":"S","color":"Black","priceCents":3299,"cartKey":"Black__S","squareVariationId":"ZBQSW2IFBK26H3YMZXMVOUT5","checkoutReady":true},
+        {"id":"NL-04-M","label":"M","color":"Black","priceCents":3299,"cartKey":"Black__M","squareVariationId":"C5LU3SC547O4WVYJ6N6F2YTT","checkoutReady":true},
+        {"id":"NL-04-L","label":"L","color":"Black","priceCents":3299,"cartKey":"Black__L","squareVariationId":"3HOVH4XOWXJJHRZ53JJSWB5B","checkoutReady":true},
+        {"id":"NL-04-XL","label":"XL","color":"Black","priceCents":3299,"cartKey":"Black__XL","squareVariationId":"H6JA4LHLU7RBZL47ZPW4N3WS","checkoutReady":true},
+        {"id":"NL-04-2XL","label":"2XL","color":"Black","priceCents":3299,"cartKey":"Black__2XL","squareVariationId":"BXP5YM4JFUKC5HWV2U7CTSXD","checkoutReady":true},
+        {"id":"NL-04-3XL","label":"3XL","color":"Black","priceCents":3299,"cartKey":"Black__3XL","squareVariationId":"NKLKMBS6H6YU5S4O4WZESSXU","checkoutReady":true}
       ]
     },
     {
@@ -126,6 +126,95 @@
       "checkoutReady": true,
       "variants": [
         {"id":"NL-06-ONE","label":"One Size","color":"Heather Grey / White","priceCents":3899,"cartKey":"Gray__One Size","squareVariationId":"NGL72ITOR4SWK5DR5KY5QM6T","checkoutReady":true}
+      ]
+    },
+    {
+      "id": "NL-07",
+      "slug": "moonline",
+      "title": "MoonLine Tee",
+      "artKey": "moonline",
+      "image": "assets/products/moonline-tee.png",
+      "imageScale": 1.34,
+      "imageY": -4,
+      "subtitle": "Northline 06 · Black",
+      "description": "Moonlit peaks, reflected water, and a soaring eagle carried across a wide horizon mark.",
+      "publicVisible": true,
+      "checkoutReady": true,
+      "variants": [
+        {"id":"NL-07-S","label":"S","color":"Black","priceCents":3299,"cartKey":"Black__S","squareVariationId":"XGUYOGR2VIIMAFE2WPMLZ4QF","checkoutReady":true},
+        {"id":"NL-07-M","label":"M","color":"Black","priceCents":3299,"cartKey":"Black__M","squareVariationId":"4AR33BQFYNI7LP5S5JSILPJN","checkoutReady":true},
+        {"id":"NL-07-L","label":"L","color":"Black","priceCents":3299,"cartKey":"Black__L","squareVariationId":"JXM7NTL5EX7BEX3CNXC32NFK","checkoutReady":true},
+        {"id":"NL-07-XL","label":"XL","color":"Black","priceCents":3299,"cartKey":"Black__XL","squareVariationId":"KCSKHXS5UN36V6R3ZIAHEW6Y","checkoutReady":true},
+        {"id":"NL-07-2XL","label":"2XL","color":"Black","priceCents":3299,"cartKey":"Black__2XL","squareVariationId":"LDNPTVHS74QFRUQJ7QCLZZDU","checkoutReady":true},
+        {"id":"NL-07-3XL","label":"3XL","color":"Black","priceCents":3299,"cartKey":"Black__3XL","squareVariationId":"NDDDXI7VIOMO5MLJC6FVX42A","checkoutReady":true}
+      ]
+    },
+    {
+      "id": "NL-08",
+      "slug": "moonline-hat",
+      "title": "MoonLine Embroidered Hat",
+      "artKey": "moonline",
+      "image": "assets/products/moonline-hat.png",
+      "subtitle": "Northline Field Gear · Heather Grey / White",
+      "description": "A structured snapback embroidered with the MoonLine mountain, lake, eagle, and apex horizon.",
+      "publicVisible": true,
+      "checkoutReady": true,
+      "variants": [
+        {"id":"NL-08-ONE","label":"One Size","color":"Heather Grey / White","priceCents":3899,"cartKey":"Gray__One Size","squareVariationId":"HCWWDQULCAFCB35V6FNRXLPG","checkoutReady":true}
+      ]
+    },
+    {
+      "id": "NL-09",
+      "slug": "built-behind-the-scenes-black",
+      "title": "Built Behind the Scenes Tee",
+      "artKey": "built-behind-the-scenes",
+      "subtitle": "Black",
+      "description": "The black Built Behind the Scenes tee, staged until its official product mockup is available.",
+      "publicVisible": false,
+      "checkoutReady": true,
+      "variants": [
+        {"id":"NL-09-S","label":"S","color":"Black","priceCents":3299,"cartKey":"Black__S","squareVariationId":"N5AEVY4W2L36RVKIKJDZ4BFW","checkoutReady":true},
+        {"id":"NL-09-M","label":"M","color":"Black","priceCents":3299,"cartKey":"Black__M","squareVariationId":"XIKMOTAKQYKA4XAPAS2R2B34","checkoutReady":true},
+        {"id":"NL-09-L","label":"L","color":"Black","priceCents":3299,"cartKey":"Black__L","squareVariationId":"MJAO7PH3XCWCB6TJ7M7ITDE3","checkoutReady":true},
+        {"id":"NL-09-XL","label":"XL","color":"Black","priceCents":3299,"cartKey":"Black__XL","squareVariationId":"EPCOTGE4CLYTZTH2WRYTR7RD","checkoutReady":true},
+        {"id":"NL-09-2XL","label":"2XL","color":"Black","priceCents":3299,"cartKey":"Black__2XL","squareVariationId":"ICNM447TIJDJU2LXDIJ5DG5I","checkoutReady":true},
+        {"id":"NL-09-3XL","label":"3XL","color":"Black","priceCents":3299,"cartKey":"Black__3XL","squareVariationId":"E45VERAOTNLJCKR6FZQDVBRS","checkoutReady":true}
+      ]
+    },
+    {
+      "id": "NL-10",
+      "slug": "built-behind-the-scenes-graphite",
+      "title": "Built Behind the Scenes Tee",
+      "artKey": "built-behind-the-scenes",
+      "subtitle": "Graphite",
+      "description": "The graphite Built Behind the Scenes tee, staged until its official product mockup is available.",
+      "publicVisible": false,
+      "checkoutReady": true,
+      "variants": [
+        {"id":"NL-10-S","label":"S","color":"Graphite","priceCents":3299,"cartKey":"Graphite__S","squareVariationId":"7JJEJCO6NGWNMC6KMA2JZDVK","checkoutReady":true},
+        {"id":"NL-10-M","label":"M","color":"Graphite","priceCents":3299,"cartKey":"Graphite__M","squareVariationId":"EGXM3VHRQLZICQSN3D3SCNWZ","checkoutReady":true},
+        {"id":"NL-10-L","label":"L","color":"Graphite","priceCents":3299,"cartKey":"Graphite__L","squareVariationId":"AIYQ32657BKST7ESUGZ3KZZ2","checkoutReady":true},
+        {"id":"NL-10-XL","label":"XL","color":"Graphite","priceCents":3299,"cartKey":"Graphite__XL","squareVariationId":"6LHWVCK2WD74ZW2KXQL4OKOG","checkoutReady":true},
+        {"id":"NL-10-2XL","label":"2XL","color":"Graphite","priceCents":3299,"cartKey":"Graphite__2XL","squareVariationId":"DRUEJSF4YHABHX6N5TLT5HTT","checkoutReady":true},
+        {"id":"NL-10-3XL","label":"3XL","color":"Graphite","priceCents":3299,"cartKey":"Graphite__3XL","squareVariationId":"PLW6M4NHHBHNVOVGNVEZ5H4N","checkoutReady":true}
+      ]
+    },
+    {
+      "id": "NL-11",
+      "slug": "moonline-catalog-alias",
+      "title": "MoonLine Tee",
+      "artKey": "moonline",
+      "subtitle": "Catalog alias under review",
+      "description": "A second Square listing named MoonLine whose copied description matches Blue Divide; kept hidden to prevent a duplicate storefront card.",
+      "publicVisible": false,
+      "checkoutReady": true,
+      "variants": [
+        {"id":"NL-11-S","label":"S","color":"Black","priceCents":3299,"cartKey":"Black__S","squareVariationId":"MR62I3V444QFEM5JFHLVVUKQ","checkoutReady":true},
+        {"id":"NL-11-M","label":"M","color":"Black","priceCents":3299,"cartKey":"Black__M","squareVariationId":"ACGP6A6ZUXEGGNTO2MH7ARM6","checkoutReady":true},
+        {"id":"NL-11-L","label":"L","color":"Black","priceCents":3299,"cartKey":"Black__L","squareVariationId":"ORSFKT3CEUUZJBL5Z2NCG7BJ","checkoutReady":true},
+        {"id":"NL-11-XL","label":"XL","color":"Black","priceCents":3299,"cartKey":"Black__XL","squareVariationId":"HPVJWRFQFNF433I2N26ICELW","checkoutReady":true},
+        {"id":"NL-11-2XL","label":"2XL","color":"Black","priceCents":3299,"cartKey":"Black__2XL","squareVariationId":"RLXMG35VE2EECW65TFUWCQFZ","checkoutReady":true},
+        {"id":"NL-11-3XL","label":"3XL","color":"Black","priceCents":3299,"cartKey":"Black__3XL","squareVariationId":"HN6ABOGVPJJA2QNZL3MLE65R","checkoutReady":true}
       ]
     }
   ]
