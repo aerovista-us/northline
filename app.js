@@ -399,7 +399,7 @@
 
   function renderStories(){
     els.collectionDescription.textContent=state.data.album.collectionDescription||"";
-    els.brandManifestoArt.src=art("brand-built");
+    els.brandManifestoArt.src="assets/art/brand-built.png";
     els.storyGrid.textContent="";
     state.data.tracks.forEach(track=>{
       const card=document.createElement("article");
