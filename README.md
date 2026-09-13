@@ -131,3 +131,13 @@ The browser build uses optimized WebP artwork in `assets/art/`. The included fil
 - Use square, product-only catalog images on the shared white product-card surface.
 - Run real iOS Safari and Android Chrome audio tests.
 - Add Umami/analytics only after the final event taxonomy is agreed.
+
+## Current production handoff
+
+The authoritative continuation point for the 2026-09-12 checkout recovery is:
+
+```text
+NORTHLINE_PRODUCTION_HANDOFF_2026-09-12.md
+```
+
+Start with its **Immediate next milestone — P0** section. The current priority is to externalize and synchronize the production SKU map, verify all public Northline Square variations server-side, and prove the live storefront reaches a Square-hosted checkout URL before returning to UI polish.
